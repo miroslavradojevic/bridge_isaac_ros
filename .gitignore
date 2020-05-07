@@ -19,7 +19,8 @@ OWNERS
 NOTICE
 README.md
 
-packages/
-!packages/isaac_to_ros/
+packages/*
+!packages/isaac_to_ros/*
+!packages/ros_bridge/*
 
 

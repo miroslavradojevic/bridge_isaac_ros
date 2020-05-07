@@ -1,0 +1,32 @@
+{
+  "name": "ping",
+  "modules": [
+    "isaac_to_ros:ping_components",
+    "//packages/ros_bridge:ros_bridge"
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "name": "ping",
+        "components": [
+          {
+            "name": "ping",
+            "type": "isaac::isaac_to_ros::Ping"
+          },
+          {
+            "name": "message_ledger",
+            "type": "isaac::alice::MessageLedger"
+          }
+        ]
+      }
+    ],
+    "edges": []
+  },
+  "config": {
+    "ping": {
+      "ping": {
+        "tick_period": "0.5Hz"
+      }
+    }
+  }
+}

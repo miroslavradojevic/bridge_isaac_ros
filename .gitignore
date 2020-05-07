@@ -4,9 +4,9 @@ messages/
 third_party/
 packages_jetpack43/
 packages_x86_64/
-bazel-isaac-sdk-2019-3
 
 .bazelrc
+bazel-isaac-sdk-2019-3
 bazel-bin
 bazel-genfiles
 bazel-out
@@ -17,7 +17,7 @@ LICENSE
 WORKSPACE
 OWNERS
 NOTICE
-README.md
+/README.md
 
 packages/*
 !packages/isaac_to_ros/*

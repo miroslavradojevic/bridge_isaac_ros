@@ -13,5 +13,3 @@ isaac_cc_module(
   srcs = ["Ping.cpp"],
   hdrs = ["Ping.hpp"],
 )
-
-

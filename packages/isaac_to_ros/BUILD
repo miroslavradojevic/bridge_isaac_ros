@@ -8,6 +8,13 @@ isaac_app(
      ]
 )
 
+isaac_app(
+  name = "ping_to_ros",
+  modules = ["//packages/isaac_to_ros:ping_components",
+             "//packages/ros_bridge:ros_bridge"
+  ]
+)
+
 isaac_cc_module(
   name = "ping_components",
   srcs = ["Ping.cpp"],

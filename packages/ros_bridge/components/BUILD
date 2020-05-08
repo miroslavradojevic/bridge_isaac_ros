@@ -11,6 +11,17 @@ license agreement from NVIDIA CORPORATION is strictly prohibited.
 load("//engine/build:isaac.bzl", "isaac_cc_library", "isaac_component")
 
 isaac_component(
+    name = "ping_to_ros",
+    tags = ["manual"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":proto_to_ros_converter",
+        "//packages/ros_bridge/gems",
+        "//third_party:ros",
+    ],
+)
+
+isaac_component(
     name = "camera_image_to_ros",
     tags = ["manual"],
     visibility = ["//visibility:public"],
@@ -53,19 +64,6 @@ isaac_component(
         "//third_party:ros",
     ],
 )
-
-isaac_component(
-    name = "ping_to_ros",
-    tags = ["manual"],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":proto_to_ros_converter",
-        "//packages/ros_bridge/gems",
-        "//third_party:ros",
-    ],
-)
-
-
 
 isaac_component(
     name = "goal_to_ros",

@@ -1,0 +1,34 @@
+{
+    "name": "ping_to_ros",
+    "modules": [
+        "isaac_to_ros:ping_components",
+        "//packages/ros_bridge:ros_bridge"
+    ],
+    "graph": {
+        "nodes": [
+            {
+                "name": "ping_node",
+                "components": [
+                    {
+                        "name": "message_ledger",
+                        "type": "isaac::alice::MessageLedger"
+                    },
+                    {
+                        "name": "ping_component",
+                        "type": "isaac::isaac_to_ros::Ping"
+                    }
+                ]
+            },
+            {
+                "name": "ping_to_ros",
+                "subgraph": "packages/isaac_to_ros/ping_to_ros.subgraph.json"
+            }
+        ],
+        "edges": [
+            {
+                "source": "ping_node/ping_component/ping_channel",
+                "target": "ping_to_ros.subgraph/interface/image"
+            }
+        ]
+    }
+}

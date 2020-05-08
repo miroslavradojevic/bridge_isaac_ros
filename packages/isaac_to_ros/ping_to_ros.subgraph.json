@@ -1,0 +1,87 @@
+{
+    "modules": [
+        "//packages/ros_bridge:ros_bridge"
+    ],
+    "graph": {
+        "nodes": [
+            {
+                "name": "subgraph",
+                "components": [
+                    {
+                        "name": "message_ledger",
+                        "type": "isaac::alice::MessageLedger"
+                    },
+                    {
+                        "name": "interface",
+                        "type": "isaac::alice::Subgraph"
+                    }
+                ]
+            },
+            {
+                "name": "behavior_bridge",
+                "components": [
+                    {
+                        "name": "NodeGroup",
+                        "type": "isaac::alice::behaviors::NodeGroup"
+                    },
+                    {
+                        "name": "MemorySequenceBehavior",
+                        "type": "isaac::alice::behaviors::MemorySequenceBehavior"
+                    }
+                ]
+            },
+            {
+                "name": "ros_node",
+                "components": [
+                    {
+                        "name": "RosNode",
+                        "type": "isaac::ros_bridge::RosNode"
+                    }
+                ],
+                "disable_automatic_start": true
+            },
+            {
+                "name": "ros_converters",
+                "components": [
+                    {
+                        "name": "MessageLedger",
+                        "type": "isaac::alice::MessageLedger"
+                    },
+                    {
+                        "name": "PingToRos",
+                        "type": "isaac::ros_bridge::PingToRos"
+                    }
+                ],
+                "disable_automatic_start": true
+            }
+        ],
+        "edges": [
+            {
+                "source": "subgraph/interface/image",
+                "target": "ros_converters/PingToRos/proto"
+            }
+        ]
+    },
+    "config": {
+        "behavior_bridge": {
+            "tick_period": "30Hz",
+            "NodeGroup": {
+                "node_names": [
+                    "$(fullname ros_node)",
+                    "$(fullname ros_converters)"
+                ]
+            }
+        },
+        "ros_node": {
+            "RosNode": {
+                "tick_period": "30Hz"
+            }
+        },
+        "ros_converters": {
+            "PingToRos": {
+                "ros_node": "$(fullname ros_node)",
+                "channel_name": "/ping_message"
+            }
+        }
+    }
+}

@@ -1,9 +1,9 @@
-apps/
-engine/
-messages/
-third_party/
-packages_jetpack43/
-packages_x86_64/
+/apps/
+/engine/
+/messages/
+/third_party/
+/packages_jetpack43/
+/packages_x86_64/
 
 .bazelrc
 bazel-isaac-sdk-2019-3
@@ -13,14 +13,14 @@ bazel-out
 bazel-testlogs
 .vscode/
 
-LICENSE
-WORKSPACE
-OWNERS
-NOTICE
+/LICENSE
+/WORKSPACE
+/OWNERS
+/NOTICE
 /README.md
 
-packages/*
-!packages/isaac_to_ros/*
-!packages/ros_bridge/*
+# packages/*
+# !packages/isaac_to_ros/*
+# !packages/ros_bridge/*
 
 
